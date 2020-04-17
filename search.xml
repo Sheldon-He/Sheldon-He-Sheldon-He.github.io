@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Hexo live2d修改可移动</title>
+      <link href="/2020/04/17/Hexo/live2d%E5%8F%AF%E7%A7%BB%E5%8A%A8%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%83%BD%E8%B6%85%E5%87%BA%E8%BE%B9%E7%95%8C/"/>
+      <url>/2020/04/17/Hexo/live2d%E5%8F%AF%E7%A7%BB%E5%8A%A8%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%83%BD%E8%B6%85%E5%87%BA%E8%BE%B9%E7%95%8C/</url>
+      
+        <content type="html"><![CDATA[<p>缺点:1.不会自动跟随页面转变，<br>     2.超出变界拖不回来</p><p>感谢张书樵大神的分享，在目录source/lived2d/waifu-tips.js上加上js代码<br>     代码如下：<br>    window.onload = function() {<br>    var waifu = document.getElementById(‘waifu’);<br>// 获取鼠标点击时在div中的相对位置<br>    waifu.onmousedown = function(ev) {<br>        var ev = ev || window.event; </p><pre><code>var relaX = ev.clientX - this.offsetLeft;var relaY = ev.clientY - this.offsetTop;</code></pre><p>// 获取当前鼠标位置，减去与div的相对位置得到当前div应该被拖拽的位置<br>        document.onmousemove = function(ev) {<br>            var ev = ev || window.event;<br>            waifu.style.left = ev.clientX - relaX + ‘px’;<br>            waifu.style.top = ev.clientY - relaY + ‘px’;<br>        };<br>        document.onmouseup = function(ev) {<br>          var ev = ev || window.event;<br>          document.onmousemove = null;<br>          document.onmouseup = null;<br>         }<br>     }<br>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> live2d </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo prism-plugin出错</title>
+      <link href="/2020/04/17/Hexo/%E6%8F%92%E4%BB%B6wordcount/"/>
+      <url>/2020/04/17/Hexo/%E6%8F%92%E4%BB%B6wordcount/</url>
+      
+        <content type="html"><![CDATA[<p>今天启用代码高亮安装命令如下：<br>npm i -S hexo-prism-plugin<br>导致我各种报错，uninstall都删不掉，能力有限只能备份了主题的东西，之后重新安装hexo，不要在_config.yml 中用plugin指明插件，并且保证在package.json中存在hexo-server依赖， 刚刚这样解决的，不知道是不是根本问题所在。</p><p>重装完，我没注意我开启了wordcount插件，导致全部报错，排查很麻烦，各种ejs error，直到看到一个很小的东方wordcount这里没显示error我想就是之前开启，没安装wordcount<br>wordcount安装<br>npm i –save hexo-wordcount</p><p>至此所有东西回来了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo插件问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java中的对象引用和对象的区别</title>
+      <link href="/2020/04/13/Java/java/"/>
+      <url>/2020/04/13/Java/java/</url>
+      
+        <content type="html"><![CDATA[<p>一、对象和引用的概念：<br>Person p = new Person();<br>类名 对象名 = new 类名();</p><ol><li>右面的new Person，是以Person类为模板的，在堆空间里创建一个Person对象；new是用来在堆上创建对象用</li><li>末尾的( )代表着：在对象创建之后，立即调用Person类的构造函数，对新生成的对象进行初始化。（如果没构造函数，Java会有一个默认的构造函数的）；</li><li>左面的Person p,创建了一个Person类引用变量，p是一个引用。</li><li>= 操作符使对象引用指向刚才创建的那个Person对象。<br>拆分开也就是：等同于<br>Person p;<br>p = new Person();<br>在java中，都是通过引用来操纵对象的，这也是两者的区别。</li></ol><p>二、对象和引用的区别：<br>1、关联性：<br>1）. 当对象的引用变量指向对象时，两者就互相联系起来，改变引用的属性，就会改变对象的属性；<br>2）. 如果同一个对象被多个引用变量引用的话，则这些引用变量将共同影响这个对象本身；<br>3）. 在java中，都是通过引用来操纵对象的。</p><p>2、差异性：<br>1）. 一个对象可以被不同的引用变量来操纵，同时一个引用变量也可以指向不同的对象，但是同一时刻下只能指向一个对象。<br>2）. 从存储空间上来看，对象和引用也是相互独立的，对象一般存储在堆中，而引用存储在堆栈中（存储速度更快）。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
